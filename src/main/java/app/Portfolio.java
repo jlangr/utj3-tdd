@@ -2,7 +2,6 @@ package app;
 
 public class Portfolio {
     private boolean isEmpty = true;
-    private int size = 0;
 
     public boolean isEmpty() {
         return isEmpty;
@@ -10,12 +9,11 @@ public class Portfolio {
 
     public void purchase(String symbol, int shares) {
         isEmpty = false;
-        size++;
     }
 
     // START:impl
     public int size() {
-        return size;
+        return isEmpty ? 0 : 1;
     }
     // END:impl
 }
