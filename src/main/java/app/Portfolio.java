@@ -11,7 +11,7 @@ public class Portfolio {
     }
 
     public void purchase(String symbol, int shares) {
-        purchases.put(symbol, shares);
+        purchases.put(symbol, sharesOf(symbol + shares)); // OOPS!
     }
 
     public int size() {
