@@ -60,9 +60,9 @@ public class APortfolio {
     // START:test
     @Test
     void returnsSharesGivenSymbol() {
-        portfolio.purchase("AAPL", 1);
+        portfolio.purchase("AAPL", 42);
 
-        assertEquals(1, portfolio.sharesOf("AAPL"));
+        assertEquals(42, portfolio.sharesOf("AAPL"));
     }
     // END: test
 }
