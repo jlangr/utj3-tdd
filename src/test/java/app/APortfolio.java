@@ -64,7 +64,6 @@ public class APortfolio {
         assertEquals(42, portfolio.sharesOf("AAPL"));
     }
 
-    // START:test
     @Test
     void separatesSharesBySymbol() {
         portfolio.purchase("SONO", 42);
@@ -72,6 +71,12 @@ public class APortfolio {
         portfolio.purchase("AAPL", 1);
 
         assertEquals(42, portfolio.sharesOf("SONO"));
+    }
+
+    // START:test
+    @Test
+    void returns0SharesForSymbolNotPurchased() {
+        assertEquals(0, portfolio.sharesOf("SONO"));
     }
     // END: test
 }
