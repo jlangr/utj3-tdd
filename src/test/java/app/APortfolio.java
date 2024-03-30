@@ -1,5 +1,6 @@
 package app;
 
+import com.sun.source.doctree.StartElementTree;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,12 +31,21 @@ public class APortfolio {
         assertEquals(0, portfolio.size());
     }
 
-    // START:test
     @Test
     void hasSize1OnPurchase() {
         portfolio.purchase("AAPL", 1);
 
         assertEquals(1, portfolio.size());
+    }
+
+    // START:test
+    @Test
+    void incrementsSizeWithEachPurchaseDifferentSymbol() {
+        portfolio.purchase("AAPL", 1);
+
+        portfolio.purchase("SONO", 1);
+
+        assertEquals(2, portfolio.size());
     }
     // END: test
 }
