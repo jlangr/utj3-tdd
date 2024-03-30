@@ -13,7 +13,7 @@ public class Portfolio {
 
     // START:impl
     public int size() {
-        return -1
+        return -1;
     }
     // END:impl
 }
