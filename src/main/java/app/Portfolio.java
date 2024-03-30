@@ -1,15 +1,13 @@
 package app;
 
 public class Portfolio {
-    private boolean isEmpty = true;
     private int size = 0;
 
     public boolean isEmpty() {
-        return isEmpty;
+        return size == 0;
     }
 
     public void purchase(String symbol, int shares) {
-        isEmpty = false;
         size++;
     }
 
