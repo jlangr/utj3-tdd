@@ -73,10 +73,19 @@ public class APortfolio {
         assertEquals(42, portfolio.sharesOf("SONO"));
     }
 
-    // START:test
     @Test
     void returns0SharesForSymbolNotPurchased() {
         assertEquals(0, portfolio.sharesOf("SONO"));
+    }
+
+    // START:test
+    @Test
+    void accumulatesSharesOfSameSymbolPurchase() {
+        portfolio.purchase("SONO", 42);
+
+        portfolio.purchase("SONO", 100);
+
+        assertEquals(142, portfolio.sharesOf("SONO"));
     }
     // END: test
 }
