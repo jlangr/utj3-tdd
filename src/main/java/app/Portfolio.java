@@ -10,9 +10,13 @@ public class Portfolio {
         return purchases.isEmpty();
     }
 
+    // START:purchase
     public void purchase(String symbol, int shares) {
-        purchases.put(symbol, sharesOf(symbol + shares)); // OOPS!
+        // START_HIGHLIGHT
+        purchases.put(symbol, sharesOf(symbol) + shares);
+        // END_HIGHLIGHT
     }
+    // END:purchase
 
     public int size() {
         return purchases.size();
