@@ -25,10 +25,17 @@ public class APortfolio {
         assertFalse(portfolio.isEmpty());
     }
 
-    // START:test
     @Test
     void hasSize0WhenCreated() {
         assertEquals(0, portfolio.size());
+    }
+
+    // START:test
+    @Test
+    void hasSize1OnPurchase() {
+        portfolio.purchase("AAPL", 1);
+
+        assertEquals(1, portfolio.size());
     }
     // END: test
 }
