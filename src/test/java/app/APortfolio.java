@@ -17,7 +17,7 @@ public class APortfolio {
     void isNotEmptyAfterPurchase() {
         var portfolio = new Portfolio();
 
-        portfolio.purchase("NVDA", 1);
+        portfolio.purchase("AAPL", 1);
 
         assertFalse(portfolio.isEmpty());
     }
