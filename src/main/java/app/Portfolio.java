@@ -18,5 +18,9 @@ public class Portfolio {
     public int size() {
         return symbols.size();
     }
+
+    public int sharesOf(String symbol) {
+        return -1;
+    }
     // END:impl
 }
