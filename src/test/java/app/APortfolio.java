@@ -6,13 +6,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+// START:test
 public class APortfolio {
     Portfolio portfolio;
 
+    // START_HIGHLIGHT
     @BeforeEach
     void create() {
         portfolio = new Portfolio();
     }
+    // END_HIGHLIGHT
 
     @Test
     void isEmptyWhenCreated() {
@@ -26,3 +29,4 @@ public class APortfolio {
         assertFalse(portfolio.isEmpty());
     }
 }
+// END:test
