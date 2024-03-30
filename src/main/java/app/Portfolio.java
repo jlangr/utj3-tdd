@@ -18,6 +18,7 @@ public class Portfolio {
         return purchases.size();
     }
 
+    // START:sharesOf
     public int sharesOf(String symbol) {
         // START_HIGHLIGHT
         if (!purchases.containsKey(symbol)) return 0;
@@ -25,5 +26,6 @@ public class Portfolio {
 
         return purchases.get(symbol);
     }
+    // END:sharesOf
 }
 // END:impl
