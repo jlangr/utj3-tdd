@@ -21,7 +21,7 @@ public class APortfolio {
 
     @Test
     void isNotEmptyAfterPurchase() {
-        portfolio.purchase("NVDA", 1);
+        portfolio.purchase("AAPL", 1);
 
         assertFalse(portfolio.isEmpty());
     }
