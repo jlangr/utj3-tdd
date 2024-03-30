@@ -57,12 +57,21 @@ public class APortfolio {
         assertEquals(1, portfolio.size());
     }
 
-    // START:test
     @Test
     void returnsSharesGivenSymbol() {
+        portfolio.purchase("AAPL", 42);
+
+        assertEquals(42, portfolio.sharesOf("AAPL"));
+    }
+
+    // START:test
+    @Test
+    void separatesSharesBySymbol() {
+        portfolio.purchase("SONO", 42);
+
         portfolio.purchase("AAPL", 1);
 
-        assertEquals(1, portfolio.sharesOf("AAPL"));
+        assertEquals(42, portfolio.sharesOf("SONO"));
     }
     // END: test
 }
