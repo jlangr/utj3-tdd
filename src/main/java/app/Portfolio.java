@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class Portfolio {
     private Set symbols = new HashSet<String>();
+    private int shares;
 
     public boolean isEmpty() {
         return symbols.isEmpty();
@@ -12,6 +13,7 @@ public class Portfolio {
 
     public void purchase(String symbol, int shares) {
         symbols.add(symbol);
+        this.shares = shares;
     }
 
     // START:impl
@@ -20,7 +22,7 @@ public class Portfolio {
     }
 
     public int sharesOf(String symbol) {
-        return -1;
+        return shares;
     }
     // END:impl
 }
