@@ -3,8 +3,7 @@ package app;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class APortfolio {
     Portfolio portfolio;
@@ -25,4 +24,11 @@ public class APortfolio {
 
         assertFalse(portfolio.isEmpty());
     }
+
+    // START:test
+    @Test
+    void hasSize0WhenCreated() {
+        assertEquals(0, portfolio.size());
+    }
+    // END: test
 }

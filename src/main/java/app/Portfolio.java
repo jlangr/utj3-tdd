@@ -10,4 +10,10 @@ public class Portfolio {
     public void purchase(String symbol, int shares) {
         isEmpty = false;
     }
+
+    // START:impl
+    public int size() {
+        return -1
+    }
+    // END:impl
 }
