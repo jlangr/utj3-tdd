@@ -25,3 +25,4 @@ public class Portfolio {
         return purchases.get(symbol);
     }
 }
+// END:impl
