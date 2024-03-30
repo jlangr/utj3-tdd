@@ -13,6 +13,7 @@ public class APortfolio {
         assertTrue(portfolio.isEmpty());
     }
 
+    // START:test
     @Test
     void isNotEmptyAfterPurchase() {
         var portfolio = new Portfolio();
@@ -21,4 +22,5 @@ public class APortfolio {
 
         assertFalse(portfolio.isEmpty());
     }
+    // END:test
 }

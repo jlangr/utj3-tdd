@@ -5,6 +5,8 @@ public class Portfolio {
         return true;
     }
 
+    // START:impl
     public void purchase(String symbol, int shares) {
     }
+    // END:impl
 }
