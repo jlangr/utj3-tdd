@@ -3,6 +3,7 @@ package app;
 import java.util.HashSet;
 import java.util.Set;
 
+// START:impl
 public class Portfolio {
     private Set symbols = new HashSet<String>();
 
@@ -14,9 +15,8 @@ public class Portfolio {
         symbols.add(symbol);
     }
 
-    // START:impl
     public int size() {
         return symbols.size();
     }
-    // END:impl
 }
+// END:impl
