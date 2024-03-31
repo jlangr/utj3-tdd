@@ -37,7 +37,6 @@ public class APortfolio {
         assertEquals(1, portfolio.size());
     }
 
-    // START:test
     @Test
     void incrementsSizeWithEachPurchaseDifferentSymbol() {
         portfolio.purchase("AAPL", 1);
@@ -77,7 +76,6 @@ public class APortfolio {
         assertEquals(0, portfolio.sharesOf("SONO"));
     }
 
-    // START:test
     @Test
     void accumulatesSharesOfSameSymbolPurchase() {
         portfolio.purchase("SONO", 42);
@@ -85,6 +83,16 @@ public class APortfolio {
         portfolio.purchase("SONO", 100);
 
         assertEquals(142, portfolio.sharesOf("SONO"));
+    }
+
+    // START:test
+    @Test
+    void reducesSharesOnSell() {
+        portfolio.purchase("AAPL", 100);
+
+        portfolio.sell("AAPL", 25);
+
+        assertEquals(75, portfolio.sharesOf("AAPL"));
     }
     // END: test
 }

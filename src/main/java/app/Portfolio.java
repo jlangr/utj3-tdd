@@ -10,22 +10,22 @@ public class Portfolio {
         return purchases.isEmpty();
     }
 
-    // START:purchase
+    // START:sell
     public void purchase(String symbol, int shares) {
-        // START_HIGHLIGHT
         purchases.put(symbol, sharesOf(symbol) + shares);
-        // END_HIGHLIGHT
     }
-    // END:purchase
+
+    public void sell(String symbol, int shares) {
+        purchases.put(symbol, sharesOf(symbol) - shares);
+    }
+    // END:sell
 
     public int size() {
         return purchases.size();
     }
 
     public int sharesOf(String symbol) {
-        // START_HIGHLIGHT
         if (!purchases.containsKey(symbol)) return 0;
-        // END_HIGHLIGHT
 
         return purchases.get(symbol);
     }
