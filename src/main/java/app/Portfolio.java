@@ -11,7 +11,7 @@ public class Portfolio {
     // END_HIGHLIGHT
 
     // ...
-    // STOP:impl
+    // END:impl
     public boolean isEmpty() {
         return symbols.isEmpty();
     }
