@@ -1,9 +1,9 @@
 package app;
 
+// START:impl
 import java.util.HashMap;
 import java.util.Map;
 
-// START:impl
 public class Portfolio {
     private Map<String, Integer> purchases = new HashMap<>();
 
