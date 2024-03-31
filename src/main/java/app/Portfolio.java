@@ -1,5 +1,6 @@
 package app;
 
+// START:impl
 public class Portfolio {
     private int size = 0;
 
@@ -11,9 +12,8 @@ public class Portfolio {
         size++;
     }
 
-    // START:impl
     public int size() {
         return size;
     }
-    // END:impl
 }
+// END:impl
