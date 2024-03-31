@@ -1,11 +1,11 @@
 package app;
 
+// START:impl
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-// START:impl
 public class Portfolio {
     // START_HIGHLIGHT
     private Map<String, Integer> purchases = new HashMap<>();
