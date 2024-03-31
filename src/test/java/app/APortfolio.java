@@ -85,7 +85,6 @@ public class APortfolio {
         assertEquals(142, portfolio.sharesOf("SONO"));
     }
 
-    // START:test
     @Test
     void reducesSharesOnSell() {
         portfolio.purchase("AAPL", 100);
@@ -94,5 +93,4 @@ public class APortfolio {
 
         assertEquals(75, portfolio.sharesOf("AAPL"));
     }
-    // END: test
 }
