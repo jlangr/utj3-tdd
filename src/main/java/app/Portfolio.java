@@ -12,14 +12,20 @@ public class Portfolio {
 
     // START:sell
     public void purchase(String symbol, int shares) {
+        // START_HIGHLIGHT
         updateShares(symbol, shares);
+        // END_HIGHLIGHT
     }
 
     public void sell(String symbol, int shares) {
+        // START_HIGHLIGHT
         updateShares(symbol, -shares);
+        // END_HIGHLIGHT
     }
 
+    // START_HIGHLIGHT
     private void updateShares(String symbol, int shares) {
+        // END_HIGHLIGHT
         purchases.put(symbol, sharesOf(symbol) + shares);
     }
     // END:sell
