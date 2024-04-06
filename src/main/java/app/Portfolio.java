@@ -18,11 +18,16 @@ public class Portfolio {
     // START:impl
     public void sell(String symbol, int shares) {
         // START_HIGHLIGHT
-        if (sharesOf(symbol) < shares)
-            throw new InvalidTransactionException();
+        throwOnOversell(symbol, shares);
         // END_HIGHLIGHT
 
         updateShares(symbol, -shares);
+    }
+
+    // START_HIGHLIGHT
+    private void throwOnOversell(String symbol, int shares) {
+        if (sharesOf(symbol) < shares)
+            throw new InvalidTransactionException();
     }
     // END:impl
 
