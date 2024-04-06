@@ -94,13 +94,22 @@ public class APortfolio {
         assertEquals(75, portfolio.sharesOf("AAPL"));
     }
 
-    // START:test
     @Test
     void throwsWhenSellingMoreSharesThanHeld() {
         portfolio.purchase("AAPL", 10);
 
         assertThrows(InvalidTransactionException.class, () ->
             portfolio.sell("AAPL", 10 + 1));
+    }
+
+    // START:test
+    @Test
+    void reducesSizeWhenLiquidatingSymbol() {
+        portfolio.purchase("AAPL", 50);
+
+        portfolio.sell("AAPL", 50);
+
+        assertEquals(0, portfolio.size());
     }
     // END:test
 }

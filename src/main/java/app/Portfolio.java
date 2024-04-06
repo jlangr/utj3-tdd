@@ -17,19 +17,26 @@ public class Portfolio {
 
     // START:impl
     public void sell(String symbol, int shares) {
-        // START_HIGHLIGHT
         throwOnOversell(symbol, shares);
-        // END_HIGHLIGHT
-
         updateShares(symbol, -shares);
+        // START_HIGHLIGHT
+        removeSymbolIfSoldOut(symbol);
+        // END_HIGHLIGHT
     }
 
     // START_HIGHLIGHT
+    private void removeSymbolIfSoldOut(String symbol) {
+    // END_HIGHLIGHT
+        if (sharesOf(symbol) == 0)
+            purchases.remove(symbol);
+
+    }
+    // END:impl
+
     private void throwOnOversell(String symbol, int shares) {
         if (sharesOf(symbol) < shares)
             throw new InvalidTransactionException();
     }
-    // END:impl
 
     private void updateShares(String symbol, int shares) {
         purchases.put(symbol, sharesOf(symbol) + shares);
