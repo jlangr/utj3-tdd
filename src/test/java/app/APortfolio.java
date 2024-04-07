@@ -136,16 +136,6 @@ public class APortfolio {
             assertEquals(portfolio.lastTransaction(),
                 new Transaction("SONO", 20, BUY, now));
         }
-
-        @Test
-        void returnsLastTransactionWhenSell() {
-            portfolio.purchase("SONO", 200);
-
-            portfolio.sell("SONO", 40);
-
-            assertEquals(portfolio.lastTransaction(),
-                new Transaction("SONO", 40, SELL, now));
-        }
         // END:test
 
         // START:test_zero
