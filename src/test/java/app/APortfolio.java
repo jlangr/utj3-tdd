@@ -118,7 +118,7 @@ public class APortfolio {
         assertEquals(0, portfolio.size());
     }
 
-    // START:test_purchase
+    // START:test
     @Nested
     class LastTransaction {
         Instant now = Instant.now();
@@ -137,8 +137,6 @@ public class APortfolio {
                 new Transaction("SONO", 20, BUY, now));
         }
 
-        // END:test_purchase
-        // START:test_sell
         @Test
         void returnsLastTransactionWhenSell() {
             portfolio.purchase("SONO", 200);
@@ -148,7 +146,7 @@ public class APortfolio {
             assertEquals(portfolio.lastTransaction(),
                 new Transaction("SONO", 40, SELL, now));
         }
-        // END:test_sell
+        // END:test
 
         // START:test_zero
         @Test
