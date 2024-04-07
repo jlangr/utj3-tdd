@@ -27,12 +27,16 @@ public class Portfolio {
 
     // START:impl
     public void purchase(String symbol, int shares) {
+        // START_HIGHLIGHT
         updateShares(symbol, shares, BUY);
+        // END_HIGHLIGHT
     }
 
     public void sell(String symbol, int shares) {
         throwOnOversell(symbol, shares);
+        // START_HIGHLIGHT
         updateShares(symbol, -shares, SELL);
+        // END_HIGHLIGHT
         removeSymbolIfSoldOut(symbol);
     }
 
