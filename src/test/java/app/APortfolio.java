@@ -149,6 +149,14 @@ public class APortfolio {
                 new Transaction("SONO", 40, SELL, now));
         }
         // END:test_sell
+
+        // START:test_zero
+        @Test
+        void returnsNullWhenNoPreviousTransactionMade() {
+            assertNull(portfolio.lastTransaction());
+        }
+        // END:test_zero
+
         // START:test_purchase
     }
     // END:test_purchase
