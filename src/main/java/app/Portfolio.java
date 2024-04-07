@@ -16,7 +16,7 @@ import java.util.Map;
 public class Portfolio {
     // START_HIGHLIGHT
     private Transaction lastTransaction;
-    private LinkedList transactions = new LinkedList();
+    private LinkedList<Transaction> transactions = new LinkedList<>();
     // END_HIGHLIGHT
     // ...
     // END:impl
@@ -39,19 +39,21 @@ public class Portfolio {
 
     // START:impl
     private void updateShares(String symbol, int shares) {
-        lastTransaction = new Transaction(
+        // START_HIGHLIGHT
+        var transaction = new Transaction(
+            // END_HIGHLIGHT
             symbol,
             abs(shares),
             shares > 0 ? BUY : SELL,
             clock.instant());
         // START_HIGHLIGHT
-        transactions.addFirst(lastTransaction);
+        transactions.addFirst(transaction);
         // END_HIGHLIGHT
         purchases.put(symbol, sharesOf(symbol) + shares);
     }
 
     public Transaction lastTransaction() {
-        return lastTransaction;
+        return transactions.peekFirst();
     }
 
     // START_HIGHLIGHT
