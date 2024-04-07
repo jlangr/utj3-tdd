@@ -165,6 +165,11 @@ public class APortfolio {
         }
 
         @Test
+        void returnsEmptyListWhenNoTransactionsMade() {
+            assertTrue(portfolio.transactions().isEmpty());
+        }
+
+        @Test
         void returnsListOfTransactionsReverseChronologically() {
             portfolio.purchase("A", 1);
             portfolio.purchase("B", 2);
