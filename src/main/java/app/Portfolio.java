@@ -10,7 +10,6 @@ import static java.lang.Math.abs;
 import java.util.HashMap;
 import java.util.Map;
 
-
 // START:impl
 public class Portfolio {
     // START_HIGHLIGHT
@@ -30,12 +29,6 @@ public class Portfolio {
         updateShares(symbol, shares);
     }
 
-    public void sell(String symbol, int shares) {
-        throwOnOversell(symbol, shares);
-        updateShares(symbol, -shares);
-        removeSymbolIfSoldOut(symbol);
-    }
-
     private void updateShares(String symbol, int shares) {
         // START_HIGHLIGHT
         lastTransaction =
@@ -46,6 +39,13 @@ public class Portfolio {
 
     // ...
     // END:impl
+
+    public void sell(String symbol, int shares) {
+        throwOnOversell(symbol, shares);
+        updateShares(symbol, -shares);
+        removeSymbolIfSoldOut(symbol);
+    }
+
     private void removeSymbolIfSoldOut(String symbol) {
         if (sharesOf(symbol) == 0)
             purchases.remove(symbol);
