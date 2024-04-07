@@ -2,30 +2,31 @@ package app;
 
 // START:impl
 import java.time.Clock;
+import java.util.LinkedList;
+import java.util.List;
+// ...
+// END:impl
 import static app.TransactionType.BUY;
 import static app.TransactionType.SELL;
 import static java.lang.Math.abs;
-// ...
-// END:impl
 import java.util.HashMap;
 import java.util.Map;
-
 
 // START:impl
 public class Portfolio {
     // START_HIGHLIGHT
     private Transaction lastTransaction;
-    private Clock clock = Clock.systemUTC();
+    private LinkedList transactions = new LinkedList();
     // END_HIGHLIGHT
     // ...
     // END:impl
+    private Clock clock = Clock.systemUTC();
     private Map<String, Integer> purchases = new HashMap<>();
 
     public boolean isEmpty() {
         return purchases.isEmpty();
     }
 
-    // START:impl
     public void purchase(String symbol, int shares) {
         updateShares(symbol, shares);
     }
@@ -36,16 +37,28 @@ public class Portfolio {
         removeSymbolIfSoldOut(symbol);
     }
 
+    // START:impl
     private void updateShares(String symbol, int shares) {
-        // START_HIGHLIGHT
         lastTransaction = new Transaction(
             symbol,
             abs(shares),
             shares > 0 ? BUY : SELL,
             clock.instant());
+        // START_HIGHLIGHT
+        transactions.addFirst(lastTransaction);
         // END_HIGHLIGHT
         purchases.put(symbol, sharesOf(symbol) + shares);
     }
+
+    public Transaction lastTransaction() {
+        return lastTransaction;
+    }
+
+    // START_HIGHLIGHT
+    public List<Transaction> transactions() {
+        return transactions;
+    }
+    // END_HIGHLIGHT
 
     // ...
     // END:impl
@@ -69,15 +82,9 @@ public class Portfolio {
         return purchases.get(symbol);
     }
 
-    // START:impl
     public void setClock(Clock clock) {
         this.clock = clock;
     }
-
-    // START_HIGHLIGHT
-    public Transaction lastTransaction() {
-        return lastTransaction;
-    }
-    // END_HIGHLIGHT
+    // START:impl
 }
 // END:impl

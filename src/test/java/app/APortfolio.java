@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
+import java.util.List;
 
 import static app.TransactionType.BUY;
 import static app.TransactionType.SELL;
@@ -118,7 +119,6 @@ public class APortfolio {
         assertEquals(0, portfolio.size());
     }
 
-    // START:test_purchase
     @Nested
     class LastTransaction {
         Instant now = Instant.now();
@@ -137,8 +137,6 @@ public class APortfolio {
                 new Transaction("SONO", 20, BUY, now));
         }
 
-        // END:test_purchase
-        // START:test_sell
         @Test
         void returnsLastTransactionWhenSell() {
             portfolio.purchase("SONO", 200);
@@ -148,16 +146,36 @@ public class APortfolio {
             assertEquals(portfolio.lastTransaction(),
                 new Transaction("SONO", 40, SELL, now));
         }
-        // END:test_sell
 
-        // START:test_zero
         @Test
         void returnsNullWhenNoPreviousTransactionMade() {
             assertNull(portfolio.lastTransaction());
         }
-        // END:test_zero
-
-        // START:test_purchase
     }
-    // END:test_purchase
+
+    // START:test
+    @Nested
+    class TransactionHistory {
+        Instant now = Instant.now();
+
+        @BeforeEach
+        void injectFixedClock() {
+            Clock clock = Clock.fixed(now, ZoneId.systemDefault());
+            portfolio.setClock(clock);
+        }
+
+        @Test
+        void returnsListOfTransactionsReverseChronologically() {
+            portfolio.purchase("A", 1);
+            portfolio.purchase("B", 2);
+            portfolio.purchase("C", 3);
+
+            assertEquals(portfolio.transactions(), List.of(
+                new Transaction("C", 3, BUY, now),
+                new Transaction("B", 2, BUY, now),
+                new Transaction("A", 1, BUY, now)
+            ));
+        }
+    }
+    // END:test
 }
