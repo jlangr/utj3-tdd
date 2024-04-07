@@ -1,6 +1,7 @@
 package app;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.time.Clock;
@@ -8,6 +9,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 
 import static app.TransactionType.BUY;
+import static app.TransactionType.SELL;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class APortfolio {
@@ -117,16 +119,33 @@ public class APortfolio {
     }
 
     // START:test
-    @Test
-    void returnsLastTransaction() {
-        var now = Instant.now();
-        var clock = Clock.fixed(now, ZoneId.systemDefault());
-        portfolio.setClock(clock);
+    @Nested
+    class LastTransaction {
+        Instant now = Instant.now();
 
-        portfolio.purchase("SONO", 20);
+        @BeforeEach
+        void injectFixedClock() {
+            Clock clock = Clock.fixed(now, ZoneId.systemDefault());
+            portfolio.setClock(clock);
+        }
 
-        assertEquals(portfolio.lastTransaction(),
-            new Transaction("SONO", 20, BUY, now));
+        @Test
+        void returnsLastTransactionWhenPurchase() {
+            portfolio.purchase("SONO", 20);
+
+            assertEquals(portfolio.lastTransaction(),
+                new Transaction("SONO", 20, BUY, now));
+        }
+
+        @Test
+        void returnsLastTransactionWhenSell() {
+            portfolio.purchase("SONO", 200);
+
+            portfolio.sell("SONO", 40);
+
+            assertEquals(portfolio.lastTransaction(),
+                new Transaction("SONO", 40, SELL, now));
+        }
     }
     // END:test
 }

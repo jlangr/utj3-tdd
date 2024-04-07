@@ -4,6 +4,7 @@ package app;
 import java.time.Clock;
 import static app.TransactionType.BUY;
 import static app.TransactionType.SELL;
+import static java.lang.Math.abs;
 // ...
 // END:impl
 import java.util.HashMap;
@@ -39,7 +40,7 @@ public class Portfolio {
         // START_HIGHLIGHT
         lastTransaction = new Transaction(
             symbol,
-            shares,
+            abs(shares),
             shares > 0 ? BUY : SELL,
             clock.instant());
         // END_HIGHLIGHT
