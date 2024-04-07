@@ -145,7 +145,7 @@ public class APortfolio {
         }
         // END:test_zero
 
-        // START:test_purchase
+        // START:test
     }
-    // END:test_purchase
+    // END:test
 }
