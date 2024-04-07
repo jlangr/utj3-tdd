@@ -3,6 +3,11 @@ package app;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneId;
+
+import static app.TransactionType.BUY;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class APortfolio {
@@ -102,7 +107,6 @@ public class APortfolio {
             portfolio.sell("AAPL", 10 + 1));
     }
 
-    // START:test
     @Test
     void reducesSizeWhenLiquidatingSymbol() {
         portfolio.purchase("AAPL", 50);
@@ -110,6 +114,19 @@ public class APortfolio {
         portfolio.sell("AAPL", 50);
 
         assertEquals(0, portfolio.size());
+    }
+
+    // START:test
+    @Test
+    void returnsLastTransaction() {
+        var now = Instant.now();
+        var clock = Clock.fixed(now, ZoneId.systemDefault());
+        portfolio.setClock(clock);
+
+        portfolio.purchase("SONO", 20);
+
+        assertEquals(portfolio.lastTransaction(),
+            new Transaction("SONO", 20, BUY, now));
     }
     // END:test
 }
