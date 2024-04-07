@@ -27,22 +27,21 @@ public class Portfolio {
 
     // START:impl
     public void purchase(String symbol, int shares) {
-        updateShares(symbol, shares);
+        updateShares(symbol, shares, BUY);
     }
 
     public void sell(String symbol, int shares) {
         throwOnOversell(symbol, shares);
-        updateShares(symbol, -shares);
+        updateShares(symbol, -shares, SELL);
         removeSymbolIfSoldOut(symbol);
     }
 
-    private void updateShares(String symbol, int shares) {
+    private void updateShares(String symbol,
+                              int shares,
+                              TransactionType type) {
         // START_HIGHLIGHT
-        lastTransaction = new Transaction(
-            symbol,
-            abs(shares),
-            shares > 0 ? BUY : SELL,
-            clock.instant());
+        lastTransaction =
+            new Transaction(symbol, abs(shares), type, clock.instant());
         // END_HIGHLIGHT
         purchases.put(symbol, sharesOf(symbol) + shares);
     }
