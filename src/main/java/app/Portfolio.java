@@ -28,16 +28,20 @@ public class Portfolio {
         removeSymbolIfSoldOut(symbol);
     }
 
+    // START:impl
     private void updateShares(String symbol,
                               int shares,
                               TransactionType type) {
+        // START_HIGHLIGHT
         var transaction =
+            // END_HIGHLIGHT
             new Transaction(symbol, abs(shares), type, clock.instant());
+        // START_HIGHLIGHT
         transactions.addFirst(transaction);
+        // END_HIGHLIGHT
         purchases.put(symbol, sharesOf(symbol) + shares);
     }
 
-    // START:impl
     public Transaction lastTransaction() {
         return transactions.peekFirst();
     }
