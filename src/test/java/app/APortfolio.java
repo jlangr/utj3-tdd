@@ -9,7 +9,6 @@ import java.time.Instant;
 import java.time.ZoneId;
 
 import static app.TransactionType.BUY;
-import static app.TransactionType.SELL;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class APortfolio {

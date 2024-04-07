@@ -3,7 +3,6 @@ package app;
 // START:impl
 import java.time.Clock;
 import static app.TransactionType.BUY;
-import static app.TransactionType.SELL;
 import static java.lang.Math.abs;
 // ...
 // END:impl
