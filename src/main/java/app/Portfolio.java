@@ -1,24 +1,15 @@
 package app;
 
-// START:impl
 import java.time.Clock;
 import static app.TransactionType.BUY;
 import static app.TransactionType.SELL;
 import static java.lang.Math.abs;
-// ...
-// END:impl
 import java.util.HashMap;
 import java.util.Map;
 
-
-// START:impl
 public class Portfolio {
-    // START_HIGHLIGHT
     private Transaction lastTransaction;
     private Clock clock = Clock.systemUTC();
-    // END_HIGHLIGHT
-    // ...
-    // END:impl
     private Map<String, Integer> purchases = new HashMap<>();
 
     public boolean isEmpty() {
@@ -40,15 +31,15 @@ public class Portfolio {
         removeSymbolIfSoldOut(symbol);
     }
 
+    // START_HIGHLIGHT
     private void updateShares(String symbol, int shares, TransactionType type) {
-        // START_HIGHLIGHT
+        // END_HIGHLIGHT
         lastTransaction =
+            // START_HIGHLIGHT
             new Transaction(symbol, abs(shares), type, clock.instant());
         // END_HIGHLIGHT
         purchases.put(symbol, sharesOf(symbol) + shares);
     }
-
-    // ...
     // END:impl
     private void removeSymbolIfSoldOut(String symbol) {
         if (sharesOf(symbol) == 0)
@@ -70,15 +61,11 @@ public class Portfolio {
         return purchases.get(symbol);
     }
 
-    // START:impl
     public void setClock(Clock clock) {
         this.clock = clock;
     }
 
-    // START_HIGHLIGHT
     public Transaction lastTransaction() {
         return lastTransaction;
     }
-    // END_HIGHLIGHT
 }
-// END:impl
