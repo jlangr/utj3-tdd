@@ -43,7 +43,9 @@ public class Portfolio {
     }
 
     public Transaction lastTransaction() {
+        // START_HIGHLIGHT
         return transactions.peekFirst();
+        // END_HIGHLIGHT
     }
     // END:impl
 
