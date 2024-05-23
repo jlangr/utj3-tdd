@@ -129,7 +129,7 @@ public class APortfolio {
         }
 
         @Test
-        void returnsLastTransactionWhenPurchase() {
+        void returnsLastTransactionAfterPurchase() {
             portfolio.purchase("SONO", 20);
 
             assertEquals(portfolio.lastTransaction(),
