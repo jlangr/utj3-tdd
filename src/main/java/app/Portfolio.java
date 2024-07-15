@@ -18,12 +18,11 @@ public class Portfolio {
         return purchases.size();
     }
 
+    // START:impl
     public int sharesOf(String symbol) {
         // START_HIGHLIGHT
-        if (!purchases.containsKey(symbol)) return 0;
+        return purchases.getOrDefault(symbol, 0);
         // END_HIGHLIGHT
-
-        return purchases.get(symbol);
     }
+    // END:impl
 }
-// END:impl
