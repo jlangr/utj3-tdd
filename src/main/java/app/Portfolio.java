@@ -59,9 +59,7 @@ public class Portfolio {
     }
 
     public int sharesOf(String symbol) {
-        if (!purchases.containsKey(symbol)) return 0;
-
-        return purchases.get(symbol);
+        return purchases.getOrDefault(symbol, 0);
     }
 
     public void setClock(Clock clock) {
