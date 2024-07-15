@@ -17,7 +17,7 @@ public class Portfolio {
 
     // START:impl
     public void sell(String symbol, int shares) {
-        throwOnOversell(symbol, shares);
+        abortOnOversell(symbol, shares);
         updateShares(symbol, -shares);
         // START_HIGHLIGHT
         removeSymbolIfSoldOut(symbol);
@@ -33,7 +33,7 @@ public class Portfolio {
     }
     // END:impl
 
-    private void throwOnOversell(String symbol, int shares) {
+    private void abortOnOversell(String symbol, int shares) {
         if (sharesOf(symbol) < shares)
             throw new InvalidTransactionException();
     }
