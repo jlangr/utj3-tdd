@@ -23,11 +23,6 @@ public class Portfolio {
     }
 
     public int sharesOf(String symbol) {
-        // START_HIGHLIGHT
-        if (!purchases.containsKey(symbol)) return 0;
-        // END_HIGHLIGHT
-
-        return purchases.get(symbol);
+        return purchases.getOrDefault(symbol, 0);
     }
 }
-// END:impl
