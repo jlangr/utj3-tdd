@@ -34,4 +34,9 @@ public class ATransactionHistory {
 
         assertEquals(50, history.sharesOf("B"));
     }
+
+    @Test
+    void returnsZeroSharesForNonexistentSymbol() {
+        assertEquals(0, history.sharesOf("C"));
+    }
 }
