@@ -133,8 +133,8 @@ public class APortfolio {
         void returnsLastTransactionAfterPurchase() {
             portfolio.purchase("SONO", 20);
 
-            assertEquals(portfolio.lastTransaction(),
-                new Transaction("SONO", 20, BUY, now));
+            assertEquals(new Transaction("SONO", 20, BUY, now),
+               portfolio.lastTransaction());
         }
 
         @Test
@@ -143,8 +143,8 @@ public class APortfolio {
 
             portfolio.sell("SONO", 40);
 
-            assertEquals(portfolio.lastTransaction(),
-                new Transaction("SONO", 40, SELL, now));
+            assertEquals(new Transaction("SONO", 40, SELL, now),
+               portfolio.lastTransaction());
         }
 
         @Test
